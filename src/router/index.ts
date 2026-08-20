@@ -18,7 +18,7 @@ const router = createRouter({
       component: DashboardView,
       meta: {
         requiresAuth: true,
-        roles: ['admin']
+        roles: ['ADMIN']
       }
     },
     {
@@ -45,7 +45,7 @@ const router = createRouter({
       component: CreateTicketView,
       meta: {
         requiresAuth: true,
-        roles: ['client']
+        roles: ['CLIENT']
       }
     },
 
@@ -78,7 +78,7 @@ router.beforeEach((to) => {
     to.meta.requiresAuth &&
     !keycloak.tokenParsed?.realm_access?.roles
       ?.some(role =>
-        ['admin', 'team-lead', 'agent', 'client'].includes(role)
+        ['ADMIN', 'TEAM_LEAD', 'AGENT', 'CLIENT'].includes(role)
       )
   ) {
     return '/access-denied'

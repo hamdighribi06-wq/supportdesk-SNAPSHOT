@@ -28,18 +28,21 @@ export const useAuthStore = defineStore('auth', {
       this.user =
         keycloak.tokenParsed?.preferred_username ?? null
 
-      const roles =
-        keycloak.tokenParsed?.realm_access?.roles ?? []
+      const roles = keycloak.tokenParsed?.realm_access?.roles ?? []
 
       const businessRoles = [
-        'admin',
-        'team-lead',
-        'agent',
-        'client'
+        'ADMIN',
+        'TEAM_LEAD',
+        'AGENT',
+      'CLIENT'
       ]
 
-      this.role = roles[0]
+      this.role = roles.find(role =>
+        businessRoles.includes(role)
+      ) ?? null
 
+      console.log('All roles:', roles)
+      console.log('Business role:', this.role)
       const groups =
         keycloak.tokenParsed?.groups ?? []
 
@@ -98,23 +101,23 @@ export const useAuthStore = defineStore('auth', {
     },
 
     getVisibleTickets(): Ticket[] {
-      if (this.role === 'admin') {
+      if (this.role === 'ADMIN') {
         return tickets
       }
 
-      if (this.role === 'client') {
+      if (this.role === 'CLIENT') {
         return tickets.filter(
           ticket => ticket.client === this.user
         )
       }
 
-      if (this.role === 'agent') {
+      if (this.role === 'AGENT') {
         return tickets.filter(
           ticket => ticket.team === this.team
         )
       }
 
-      if (this.role === 'team-lead') {
+      if (this.role === 'TEAM_LEAD') {
         return tickets.filter(
           ticket => ticket.team === this.team
         )
