@@ -6,9 +6,5 @@
       Vous êtes connecté, mais vous n'avez pas les droits nécessaires
       pour accéder à cette page.
     </p>
-
-    <RouterLink to="/dashboard">
-      Retour au dashboard
-    </RouterLink>
   </div>
 </template>

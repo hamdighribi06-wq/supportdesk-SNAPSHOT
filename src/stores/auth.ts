@@ -46,7 +46,7 @@ export const useAuthStore = defineStore('auth', {
       const groups =
         keycloak.tokenParsed?.groups ?? []
 
-      this.team = groups[0]?.replace('/teams/', '') ?? null
+      this.team = groups[0]?.replace('/', '') ?? null
     },
 
     // Initialisation
