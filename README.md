@@ -1,42 +1,58 @@
-# supportdesk
+# 🔐 SupportDesk — Vue.js + Keycloak
 
-This template should help get you started developing with Vue 3 in Vite.
+SupportDesk est une Single Page Application (SPA) développée avec **Vue.js 3**, **TypeScript**, **Pinia**, **Vue Router** et sécurisée avec **Keycloak**.
 
-## Recommended IDE Setup
+L'application permet de gérer des tickets selon le rôle et l'équipe de l'utilisateur.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Le projet utilise Keycloak pour :
 
-## Recommended Browser Setup
+- l'authentification des utilisateurs ;
+- la gestion des rôles ;
+- la gestion des groupes/équipes ;
+- la génération et le rafraîchissement des tokens ;
+- la protection des routes ;
+- la déconnexion complète de la session Keycloak.
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+---
 
-## Type Support for `.vue` Imports in TS
+# 📋 Sommaire
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- [Architecture](#-architecture)
+- [Technologies](#-technologies)
+- [Rôles](#-rôles)
+- [Prérequis](#-prérequis)
+- [Installation](#-installation)
+- [Démarrer Keycloak](#-démarrer-keycloak)
+- [Configurer Keycloak](#-configurer-keycloak)
+- [Démarrer la SPA](#-démarrer-la-spa)
+- [Utilisateurs de test](#-utilisateurs-de-test)
+- [Tester les fonctionnalités](#-tester-les-fonctionnalités)
+- [Sécurité](#-sécurité)
+- [Structure du projet](#-structure-du-projet)
+- [Arrêter l'application](#-arrêter-lapplication)
+- [Points importants](#-points-importants)
 
-## Customize configuration
+---
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+# 🏗 Architecture
 
-## Project Setup
+L'application est composée de deux parties principales :
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
+```text
+                    ┌─────────────────────┐
+                    │      Navigateur     │
+                    │                     │
+                    │   Vue.js SPA        │
+                    │   localhost:5173    │
+                    └──────────┬──────────┘
+                               │
+                               │ OpenID Connect
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │      Keycloak       │
+                    │                     │
+                    │   localhost:8089    │
+                    │                     │
+                    │ Realm: supportdesk  │
+                    └─────────────────────┘
