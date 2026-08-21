@@ -276,10 +276,6 @@ L'application redirige automatiquement vers Keycloak pour l'authentification.
 
 # 12. Scénarios de test
 
-ℹ️ Information : Pour faciliter les tests, le mot de passe de chaque utilisateur est identique à son username.
-Exemple : admin1 / admin1, agent1 / agent1, client1 / client1, teamlead1 / teamlead1.
-
-⚠️ Ces identifiants sont uniquement utilisés pour le POC et l'environnement de démonstration.
 
 ## 12.1 Test CLIENT
 
