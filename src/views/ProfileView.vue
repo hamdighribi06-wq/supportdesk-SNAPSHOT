@@ -31,7 +31,7 @@ const authStore = useAuthStore()
         <div>
           <span>Email : </span>
           <strong>
-            {{ authStore.user }}@supportdesk.com
+            {{ authStore.email || 'Non défini' }}
           </strong>
         </div>
         <br>

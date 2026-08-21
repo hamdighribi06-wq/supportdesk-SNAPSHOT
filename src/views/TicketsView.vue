@@ -396,4 +396,53 @@ const getStatusClass = (status: string) => {
     grid-template-columns: 1fr;
   }
 }
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.actions button,
+.comment-form button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #111827;
+  color: white;
+  cursor: pointer;
+}
+
+.actions button:hover,
+.comment-form button:hover {
+  background: #1f2937;
+}
+
+.comment {
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.comment small {
+  display: block;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+.comment p {
+  margin-bottom: 0;
+}
+
+.comment-form {
+  margin-top: 20px;
+}
+
+.comment-form textarea {
+  width: 100%;
+  min-height: 100px;
+  margin-bottom: 10px;
+  padding: 12px;
+  box-sizing: border-box;
+}
 </style>

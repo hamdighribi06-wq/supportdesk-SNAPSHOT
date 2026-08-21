@@ -19,7 +19,7 @@ const logout = async () => {
 
       <nav>
         <RouterLink
-          v-if="authStore.role === 'admin'"
+          v-if="authStore.role === 'ADMIN'"
           to="/dashboard"
         >
           Dashboard
@@ -33,7 +33,7 @@ const logout = async () => {
         </RouterLink>
 
         <RouterLink
-          v-if="authStore.role === 'client'"
+          v-if="authStore.role === 'CLIENT'"
           to="/tickets/create"
         >
           Nouveau ticket
@@ -41,6 +41,7 @@ const logout = async () => {
       </nav>
 
       <button
+        v-if="authStore.isAuthenticated"
         class="logout-button"
         @click="logout"
       >

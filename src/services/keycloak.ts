@@ -8,28 +8,21 @@ export const keycloak = new Keycloak({
 
 export async function initKeycloak() {
   const authenticated = await keycloak.init({
-    onLoad: 'check-sso',
-    checkLoginIframe: false
+    onLoad: 'login-required',
+    checkLoginIframe: false,
+    pkceMethod: 'S256'
   })
 
   if (authenticated) {
-    console.log('Utilisateur connecté')
-    console.log('Token :', keycloak.token)
+    console.log('Keycloak authenticated')
   }
 
-  // Token bientôt expiré
   keycloak.onTokenExpired = async () => {
-    console.log('Token expiré, rafraîchissement...')
-
     try {
-      const refreshed = await keycloak.updateToken(30)
-
-      if (refreshed) {
-        console.log('Token rafraîchi')
-        console.log('Nouveau token :', keycloak.token)
-      }
+      await keycloak.updateToken(30)
+      console.log('Token refreshed')
     } catch (error) {
-      console.error('Impossible de rafraîchir le token', error)
+      console.error('Token refresh failed', error)
 
       await keycloak.logout({
         redirectUri: window.location.origin

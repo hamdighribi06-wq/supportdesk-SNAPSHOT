@@ -121,7 +121,7 @@ const closedTickets = computed(() => {
           <h2>Tickets récents</h2>
 
           <p>
-            Derniers tickets accessibles.
+            Vue globale des tickets
           </p>
         </div>
 

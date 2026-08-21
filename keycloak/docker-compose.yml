@@ -18,7 +18,7 @@ services:
 
     volumes:
       - keycloak_data:/opt/keycloak/data
-      - ./realm-export.json:/opt/keycloak/data/import/realm-export.json:ro
+      - ./realm-export/realm-export.json:/opt/keycloak/data/import/realm-export.json:ro
 
 volumes:
   keycloak_data:

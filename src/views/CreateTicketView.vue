@@ -12,20 +12,29 @@ const description = ref('')
 const team = ref('team-support')
 
 function createTicket() {
-  if (!title.value.trim() || !description.value.trim()) {
+
+  if (
+    !title.value.trim() ||
+    !description.value.trim()
+  ) {
     return
   }
 
-  const newTicket = {
-    id: tickets.length + 1,
+  const newId =
+    Math.max(
+      ...tickets.map(ticket => ticket.id),
+      0
+    ) + 1
+
+  tickets.push({
+    id: newId,
     title: title.value.trim(),
     description: description.value.trim(),
     status: 'OPEN',
     client: authStore.user ?? '',
-    team: team.value
-  }
-
-  tickets.push(newTicket)
+    team: team.value,
+    comments: []
+  })
 
   router.push('/tickets')
 }
