@@ -49,6 +49,15 @@
   "roles": {
     "realm": [
       {
+        "id": "cd335619-3c94-4f7f-8a50-179de645fee2",
+        "name": "uma_authorization",
+        "description": "${role_uma_authorization}",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "5997ec92-e78f-4a9f-a5da-de1127c73e77",
+        "attributes": {}
+      },
+      {
         "id": "625d3de5-b55b-4180-a123-29448f58521a",
         "name": "default-roles-supportdesk",
         "description": "${role_default-roles}",
@@ -73,6 +82,15 @@
         "id": "a9bc186f-337f-408a-866e-0b3fab026bcb",
         "name": "AGENT",
         "description": "Can process tickets belonging to the agent team.",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "5997ec92-e78f-4a9f-a5da-de1127c73e77",
+        "attributes": {}
+      },
+      {
+        "id": "4966e4c6-d91c-4aca-8945-5a47bbdc43ab",
+        "name": "offline_access",
+        "description": "${role_offline-access}",
         "composite": false,
         "clientRole": false,
         "containerId": "5997ec92-e78f-4a9f-a5da-de1127c73e77",

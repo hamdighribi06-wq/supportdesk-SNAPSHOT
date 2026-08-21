@@ -30,5 +30,9 @@ export async function initKeycloak() {
     }
   }
 
+  const authChannel = new BroadcastChannel(
+    'supportdesk-auth'
+  )
+
   return authenticated
 }
